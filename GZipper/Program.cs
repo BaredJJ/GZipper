@@ -1,6 +1,7 @@
 ﻿using System;
 using System.IO;
 using System.IO.Compression;
+using System.Text.RegularExpressions;
 
 namespace GZipper
 {
@@ -31,9 +32,18 @@ namespace GZipper
             }
         }
 
+        //Временно
+        public static string[] GetArrayString(this string source)=>Regex.Split(source, " ");
+
+
         static void Main(string[] args)
         {
-            new MyConsole(args);
+            Console.Write($"Please enter the path of the file to the template [File name] [Archive name]:");
+            string path = Console.ReadLine();
+            path.PathToLower();
+            string[] args1 = path.GetArrayString();
+
+            new MyConsole(args1);
             Console.ReadKey();
         }
     }

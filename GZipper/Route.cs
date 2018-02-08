@@ -8,20 +8,23 @@ namespace GZipper
     /// </summary>
     class Route
     {
-        private readonly Regex _regex = new Regex(@"[a-z,A-Z]:[\\\w]+[\.\w]*");//Шаблон пути
+        private readonly Regex _regex = new Regex(@"[a-z]:[\\\w]+[\.\w]*");//Шаблон пути
+
+        private string _fileName;
+        private string _archivename;
 
         /// <summary>
         /// Путь к файлу
         /// </summary>
         public string FileName
         {
-            get { return FileName; }
+            get { return _fileName; }
             set
             {
                 if (_regex.IsMatch(value))
                 {
-                    Match match = _regex.Match(value);
-                    ArchiveName = match.Success.ToString( );
+                    _fileName = _regex.Match(value).ToString();
+
                 }
                 else Console.WriteLine("Incorrect file route");
             }
@@ -32,20 +35,20 @@ namespace GZipper
         /// </summary>
         public string ArchiveName
         {
-            get { return ArchiveName; }
+            get { return _archivename; }
             set
             {
                 if (_regex.IsMatch(value))
                 {
-                    Match match = _regex.Match(value);
-                    FileName = match.Success.ToString();
+                    _archivename = _regex.Match(value).ToString();
+                    
                 }
                 else Console.WriteLine("Incorrect arhcive route");               
             }
         }
 
-        public bool IsFileName => _regex.IsMatch(FileName);
+        public bool IsFileName => (FileName!=null) && _regex.IsMatch(FileName);
 
-        public bool IsArciveName => _regex.IsMatch(ArchiveName);
+        public bool IsArciveName => (ArchiveName != null) && _regex.IsMatch(ArchiveName);
     }
 }
