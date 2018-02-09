@@ -7,7 +7,7 @@ namespace GZipper
 {
     static class Program
     {
-        public static void Run(string input, string output, CompressionMode mode, int bufferSize = 1024)
+        public static void Run(string input, string output, CompressionMode mode, int bufferSize = 1024000)
         {
             if (!File.Exists(input))
                 return;
@@ -44,7 +44,9 @@ namespace GZipper
             string[] args1 = path.GetArrayString();
 
             new MyConsole(args1);
+            Console.WriteLine("Opreration completed!");
             Console.ReadKey();
+            System.Environment.Exit(0);
         }
     }
 }

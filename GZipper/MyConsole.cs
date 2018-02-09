@@ -42,9 +42,9 @@ namespace GZipper
                     route.FileName = args[1];
                     route.ArchiveName = args[2];
                     
-                    Console.WriteLine(route.FileName + " " + route.ArchiveName);
-                    //if (route.IsFileName && route.IsArciveName)
-                    //        Program.Run(route.FileName, route.ArchiveName, CompressionMode.Compress);
+                    //Console.WriteLine(route.FileName + " " + route.ArchiveName);
+                    if (route.IsFileName && route.IsArciveName)
+                        Program.Run(route.FileName, route.ArchiveName, CompressionMode.Compress);
 
                     
                 
@@ -54,9 +54,9 @@ namespace GZipper
                     route.ArchiveName = args[1];
                     route.FileName = args[2];
 
-                    Console.WriteLine(route.FileName + " " + route.ArchiveName);
-                        //if(route.IsFileName && route.IsArciveName)
-                        //    Program.Run(route.ArchiveName, route.FileName, CompressionMode.Decompress);
+                    //Console.WriteLine(route.FileName + " " + route.ArchiveName);
+                    if(route.IsFileName && route.IsArciveName)
+                       Program.Run(route.ArchiveName, route.FileName, CompressionMode.Decompress);
 
                         
                 

@@ -29,7 +29,9 @@ namespace GZipper
             {
                 using (var gzip = new GZipStream(ms, _mode))
                 {
-                    gzip.Write(message, 0, message.Length);
+                    if (_mode == CompressionMode.Compress)
+                        gzip.Write(message, 0, message.Length);
+                    else gzip.Read(message, 0, message.Length);
 
                     _writer.Enqueue(ms.ToArray( ));
                 }
