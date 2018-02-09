@@ -8,7 +8,7 @@ namespace GZipper
     /// </summary>
     class Route
     {
-        private readonly Regex _regex = new Regex(@"[a-z]:[\\\w]+[\.\w]*");//Шаблон пути
+        private readonly Regex _regex = new Regex(@"\w+\.\w+|[a-z]:[\\\w]+[\.\w]*");//Шаблон пути
 
         private string _fileName;
         private string _archivename;
