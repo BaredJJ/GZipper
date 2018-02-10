@@ -1,0 +1,9 @@
+D:\coding\MyProjectTemp\GZipper\TestGZipper\bin\Debug\TestGZipper.dll
+D:\coding\MyProjectTemp\GZipper\TestGZipper\bin\Debug\TestGZipper.pdb
+D:\coding\MyProjectTemp\GZipper\TestGZipper\bin\Debug\GZipper.exe
+D:\coding\MyProjectTemp\GZipper\TestGZipper\bin\Debug\Microsoft.VisualStudio.QualityTools.UnitTestFramework.dll
+D:\coding\MyProjectTemp\GZipper\TestGZipper\bin\Debug\GZipper.pdb
+D:\coding\MyProjectTemp\GZipper\TestGZipper\bin\Debug\ru\Microsoft.VisualStudio.QualityTools.UnitTestFramework.resources.dll
+D:\coding\MyProjectTemp\GZipper\TestGZipper\obj\Debug\TestGZipper.csprojResolveAssemblyReference.cache
+D:\coding\MyProjectTemp\GZipper\TestGZipper\obj\Debug\TestGZipper.dll
+D:\coding\MyProjectTemp\GZipper\TestGZipper\obj\Debug\TestGZipper.pdb

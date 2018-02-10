@@ -31,11 +31,16 @@ namespace GZipper
         {
             while (_event.WaitOne( ) && !_stopped)//Ждем когда придет сообщение
             {
+                var cpy = new List<TMessage>();
+
                 lock (_queue)//синхронизация доступа к очереди
                 {
                     while (_queue.Count > 0)//обработка всех накопившихся сообщений
-                        ProcessMessage(_queue.Dequeue( ));
+                        cpy.Add(_queue.Dequeue( ));
                 }
+
+                foreach (var item in cpy)
+                    ProcessMessage(item);
             }
 
             // Обрабатываем то, что могло остаться необработанным на момент остановки
@@ -60,8 +65,6 @@ namespace GZipper
             _event.Set( );//Оповещение фонового потока о событии
         }
 
-        public void Wait( ) => _eventThread.Join( );//Ожидания оканчания обработки потока
-
         /// <summary>
         /// Остановка
         /// </summary>
@@ -70,6 +73,7 @@ namespace GZipper
             _stopped = true;
 
             _event.Set( );
+            _eventThread.Join();
         }
 
 
@@ -100,7 +104,12 @@ namespace GZipper
         protected virtual void Dispose(bool disposing)
         {
             if (disposing)
-                _event.Dispose( );
+            {
+                if (!_stopped)
+                    this.Stop();
+
+                _event.Dispose();
+            }
         }
     }
 }

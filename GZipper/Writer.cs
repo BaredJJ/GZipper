@@ -7,7 +7,7 @@ namespace GZipper
     /// </summary>
     class Writer : MessageQueue<byte[]>
     {
-        private readonly FileStream _writer;//Объект записи 
+        private readonly Stream _writer;//Объект записи 
         private readonly object _lock;//Синхронизатор
 
         /// <summary>

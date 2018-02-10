@@ -13,21 +13,27 @@ namespace GZipper
                 return;
 
             var locker = new object();
-            var writer = new Writer(output, locker);
-            var comp = new Compressor(writer, mode);
-
-            using (var fs = new FileStream(input, FileMode.Open, FileAccess.Read))
+            using (var writer = new Writer(output, locker))
             {
-                for (long pos = 0; pos < fs.Length; pos += bufferSize)
+                using (var comp = new Compressor(writer, mode))
                 {
-                    fs.Position = pos;
-                    var buffer = new byte[Math.Min(bufferSize, fs.Length - pos)];
-
-                    lock (locker)
+                    using (var fs = new FileStream(input, FileMode.Open, FileAccess.Read))
                     {
-                        fs.Read(buffer, 0, buffer.Length);
-                        comp.Enqueue(buffer);
+                        for (long pos = 0; pos < fs.Length; pos += bufferSize)
+                        {
+                            fs.Position = pos;
+                            var buffer = new byte[Math.Min(bufferSize, fs.Length - pos)];
+
+                            lock (locker)
+                            {
+                                fs.Read(buffer, 0, buffer.Length);
+                                comp.Enqueue(buffer);
+                            }
+                        }
                     }
+
+                    writer.Stop();
+                    comp.Stop();
                 }
             }
         }
@@ -46,7 +52,6 @@ namespace GZipper
             new MyConsole(args1);
             Console.WriteLine("Opreration completed!");
             Console.ReadKey();
-            System.Environment.Exit(0);
         }
     }
 }
