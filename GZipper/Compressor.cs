@@ -3,7 +3,7 @@ using System.IO.Compression;
 
 namespace GZipper
 {
-    class Compressor : MessageQueue<byte[]>
+    public class Compressor : MessageQueue<byte[]>
     {
         private readonly Writer _writer;//Экземпляр класса для записи сжатого архива
         private readonly CompressionMode _mode;//Режим архивирования/разархивирования
@@ -29,10 +29,11 @@ namespace GZipper
             {
                 using (var gzip = new GZipStream(ms, _mode))
                 {
-                    if (_mode == CompressionMode.Compress)
-                        gzip.Write(message, 0, message.Length);
-                    else gzip.Read(message, 0, message.Length);
-
+                    //if (_mode == CompressionMode.Compress)
+                    //    gzip.Write(message, 0, message.Length);
+                    //else gzip.Read(message, 0, message.Length);
+                   
+                    gzip.CopyTo(ms);
                     _writer.Enqueue(ms.ToArray( ));
                 }
             }

@@ -7,3 +7,5 @@ D:\coding\MyProjectTemp\GZipper\TestGZipper\bin\Debug\ru\Microsoft.VisualStudio.
 D:\coding\MyProjectTemp\GZipper\TestGZipper\obj\Debug\TestGZipper.csprojResolveAssemblyReference.cache
 D:\coding\MyProjectTemp\GZipper\TestGZipper\obj\Debug\TestGZipper.dll
 D:\coding\MyProjectTemp\GZipper\TestGZipper\obj\Debug\TestGZipper.pdb
+D:\coding\MyProjectTemp\GZipper\TestGZipper\bin\Debug\GZipper.exe.config
+D:\coding\MyProjectTemp\GZipper\TestGZipper\obj\Debug\TestGZipper.csproj.CoreCompileInputs.cache
