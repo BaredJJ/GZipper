@@ -6,6 +6,7 @@ namespace TestGZipper
 {
     class TestWriter : MessageQueue<byte[]>
     {
+        private readonly Writer _writer = new Writer("125.txt", new object());
 
         public void Compress( string path1, string path2, CompressionMode mode )
         {

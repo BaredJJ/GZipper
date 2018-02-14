@@ -25,18 +25,35 @@ namespace GZipper
         /// <param name="message">Массив байт</param>
         protected override void ProcessMessage(byte[] message)
         {
-            using (var ms = new MemoryStream( ))
+            using (var input = new MemoryStream(message))
             {
-                using (var gzip = new GZipStream(ms, _mode))
+                using (var output = new MemoryStream( ))
                 {
-                    //if (_mode == CompressionMode.Compress)
-                    //    gzip.Write(message, 0, message.Length);
-                    //else gzip.Read(message, 0, message.Length);
-                   
-                    gzip.CopyTo(ms);
-                    _writer.Enqueue(ms.ToArray( ));
+                    if (_mode == CompressionMode.Compress)
+                        using (var gzip = new GZipStream(output, _mode))
+                            input.CopyTo(gzip);
+                    else using (var gzip = new GZipStream(input, _mode))
+                            gzip.CopyTo(output);
+                    _writer.Enqueue(output.ToArray( ));
                 }
             }
+            //using (var ms = new MemoryStream( ))
+            //{
+            //    if (_mode == CompressionMode.Compress)
+            //        using (var gzip = new GZipStream(ms, _mode))
+            //        {
+            //            gzip.Write(message, 0, message.Length);
+            //            //_writer.Enqueue(ms.ToArray( ));
+            //        }
+            //    else
+            //    {
+            //        using (var gzip = new GZipStream(new MemoryStream(message), _mode))
+            //        {
+
+            //        }
+                       
+            //    }
+            //}
         }
     }
 }
