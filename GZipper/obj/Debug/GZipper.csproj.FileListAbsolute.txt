@@ -1,7 +1,6 @@
 D:\coding\MyProjectTemp\GZipper\GZipper\bin\Debug\GZipper.exe.config
 D:\coding\MyProjectTemp\GZipper\GZipper\bin\Debug\GZipper.exe
 D:\coding\MyProjectTemp\GZipper\GZipper\bin\Debug\GZipper.pdb
-D:\coding\MyProjectTemp\GZipper\GZipper\obj\Debug\GZipper.csprojResolveAssemblyReference.cache
 D:\coding\MyProjectTemp\GZipper\GZipper\obj\Debug\GZipper.exe
 D:\coding\MyProjectTemp\GZipper\GZipper\obj\Debug\GZipper.pdb
 D:\coding\MyProjectTemp\GZipper\GZipper\obj\Debug\GZipper.csproj.CoreCompileInputs.cache

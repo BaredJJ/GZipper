@@ -9,6 +9,8 @@ namespace GZipper
     {
         private readonly Stream _writer;//Объект записи 
         private readonly object _lock;//Синхронизатор
+        private bool _closeStream = false;
+
 
         /// <summary>
         /// Конструткор
@@ -18,6 +20,13 @@ namespace GZipper
         public Writer(string fileName, object locker)
         {
             _writer = new FileStream(fileName, FileMode.Append, FileAccess.Write);
+            _lock = locker;
+            _closeStream = true;
+        }
+
+        public Writer(Stream stream, object locker)
+        {
+            _writer = stream;
             _lock = locker;
         }
 
@@ -38,7 +47,7 @@ namespace GZipper
         {
             base.Dispose(disposing);
 
-            if (disposing)
+            if (disposing && _closeStream)
                 _writer.Close( );
         }
     }
